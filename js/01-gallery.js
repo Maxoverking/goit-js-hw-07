@@ -9,22 +9,9 @@ const mainContainer = document.querySelector('.gallery');
 // console.log("divGallery", mainContainer);
 
 const cardsImageMarkup = createGalleryItems(galleryItems);
-// console.log("cardsImageMarkup", cardsImageMarkup)
-function createGalleryItems(galleryItems) {
-    return galleryItems.map(({preview , original , description }) => { 
-       return `<div class="gallery__item">
-       <a class="gallery__link" href="${original}">
-         <img
-           class="gallery__image"
-           src="${preview}"
-           data-source="${original}"
-           alt="${description}"
-         />
-       </a>
-     </div>`}).join('');
-    
-   
-}
+// console.log("cardsImageMarkup", cardsImageMarkup);
+
+
 
 mainContainer.insertAdjacentHTML('beforeend',cardsImageMarkup);
 
@@ -58,10 +45,24 @@ mainContainer.addEventListener('keydown', closeImagesByEsc)
 
 function closeImagesByEsc (event){
 
-    if (event.code === "Escape") {
+    if (event.key === "Escape") {
         instance.close()   
-        console.log('object');
+    }   
     }
-    
 }
+
+function createGalleryItems(galleryItems) {
+    return galleryItems.map(({preview , original , description }) => { 
+       return `<div class="gallery__item">
+       <a class="gallery__link" href="${original}">
+         <img
+           class="gallery__image"
+           src="${preview}"
+           data-source="${original}"
+           alt="${description}"
+         />
+       </a>
+     </div>`}).join('');
+    
+   
 }
