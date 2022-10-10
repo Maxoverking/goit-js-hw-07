@@ -8,29 +8,29 @@ const cardsImageMarkup = createGalleryItems(galleryItems);
 // console.log("cardsImageMarkup", cardsImageMarkup);
 mainContainer.insertAdjacentHTML('beforeend', cardsImageMarkup);
 
-mainContainer.addEventListener('click' , onClickMainContainer);
+mainContainer.addEventListener('click', onClickMainContainer);
 
 function onClickMainContainer(event){
     event.preventDefault();
-    
+    // console.log(event.currentTarget); 
+
 if(!event.target.classList.contains('gallery__image')){
     return;
 }
     
 let dataAttrImages = event.target.dataset.source;
 
-    const instance = basicLightbox.create(`<img src="${dataAttrImages}" width="800" height="600">`)
-    instance.show()
-   
+const instance = basicLightbox.create(`<img src="${dataAttrImages}" width="800" height="600">`)
+instance.show()
+
 mainContainer.addEventListener('keydown', closeImagesByEsc);
 
 function closeImagesByEsc (event){
     
     if (event.key === "Escape") {
-        instance.close();
+        instance.close(()=> console.log('object'));
         mainContainer.removeEventListener('keydown', closeImagesByEsc);
-    } 
-    
+    }   
     }
 };
 

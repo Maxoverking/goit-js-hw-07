@@ -17,7 +17,7 @@ function onClickGallery(event) {
     }
 };
 
-new SimpleLightbox('.gallery a', {captionsData: 'alt',captionDelay: 250})
+new SimpleLightbox('.gallery a', {captionsData: 'alt', captionDelay: 250})
 
 function createGalleryItems(galleryItems) {
     return galleryItems.map(({preview , original , description }) => { 
